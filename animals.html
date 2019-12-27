@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<style>
+
+body{
+
+    background-color: #1a1a1a;
+    font-family: Lucida, 'Courier New', Courier, monospace;
+    color: #d9d9d9
+
+}
+
+img.animalpicture{
+
+    border-style:dashed;
+    border-color: #ff9999;
+    border-width: 8px;
+}
+
+</style>
+
+
+
+<h2 align="center">Discovering Animals - Mood improved guaranteed!</h2>
+
+<h4 align="center">Click either button below to see random image of cats or dogs.<br><br></h4>
+<div id="buttonsContainer" align="middle">
+    <button id="dogButton">Click to see dogs!</button>
+    <button id="catButton">Click to see cats!</button>
+    <br><br>
+    </div>
+<div align="middle" border-width: 'medium'>
+<img src="http://websourcedemo.com/sites/infoconnection/Images/your%20image%20here.jpg" id="mainImg" width='500' height='auto' class="animalpicture">
+</div>
+
+<br><br><br>
+
+
+
+
+<script>
+
+
+document.getElementById('catButton').addEventListener('click', catImg);
+document.getElementById('dogButton').addEventListener('click', dogImg);
+
+function catImg (){
+
+
+
+ 
+    const Http = new XMLHttpRequest();
+const randURL = "http://aws.random.cat/meow";
+Http.open("GET", randURL);
+Http.send();
+Http.onreadystatechange=(e)=>{
+    var newImgURL=JSON.parse(Http.responseText);
+    document.getElementById('mainImg').src=newImgURL.file;
+    console.log(newImgURL.file);
+                            }
+
+}
+
+
+function dogImg (){
+
+
+
+const Http = new XMLHttpRequest();
+const randURL = "https://random.dog/woof.json";
+Http.open("GET", randURL);
+Http.send();
+Http.onreadystatechange=(e)=>{
+var newImgURL=JSON.parse(Http.responseText);
+document.getElementById('mainImg').src=newImgURL.url;
+console.log(newImgURL.url);
+                            }
+
+
+
+                    }
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
